@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebox — Give it a second life</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0faf5; color: #111; }
+
+  nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-size: 22px; font-weight: 700; color: #085041; }
+  .nav-btn { background: #1D9E75; color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }
+
+  .hero { text-align: center; padding: 80px 24px 60px; max-width: 640px; margin: 0 auto; }
+  .hero h1 { font-size: 56px; font-weight: 700; color: #085041; letter-spacing: -1px; margin-bottom: 12px; }
+  .hero p.tagline { font-size: 20px; color: #0F6E56; margin-bottom: 24px; }
+  .hero p.desc { font-size: 17px; color: #444; line-height: 1.7; margin-bottom: 40px; }
+
+  .waitlist { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .waitlist input { padding: 14px 18px; border-radius: 10px; border: 1px solid #ccc; font-size: 15px; width: 280px; outline: none; }
+  .waitlist input:focus { border-color: #1D9E75; }
+  .waitlist button { background: #1D9E75; color: #fff; padding: 14px 28px; border-radius: 10px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .waitlist button:hover { background: #0F6E56; }
+
+  .success { display: none; color: #1D9E75; font-weight: 600; font-size: 15px; margin-top: 16px; }
+
+  .how { padding: 80px 24px; text-align: center; }
+  .how h2 { font-size: 32px; font-weight: 700; color: #085041; margin-bottom: 48px; }
+  .steps { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+  .step { background: #fff; border-radius: 16px; padding: 32px 24px; width: 220px; border: 1px solid #e0f0e8; }
+  .step-num { width: 40px; height: 40px; background: #1D9E75; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; margin: 0 auto 16px; }
+  .step h3 { font-size: 16px; font-weight: 600; color: #085041; margin-bottom: 8px; }
+  .step p { font-size: 14px; color: #666; line-height: 1.6; }
+
+  .impact { background: #085041; padding: 80px 24px; text-align: center; }
+  .impact h2 { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 48px; }
+  .stats { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+  .stat { color: #fff; }
+  .stat-num { font-size: 48px; font-weight: 700; color: #9FE1CB; }
+  .stat-label { font-size: 15px; color: #9FE1CB; margin-top: 4px; }
+
+  .mission { padding: 80px 24px; text-align: center; max-width: 600px; margin: 0 auto; }
+  .mission h2 { font-size: 32px; font-weight: 700; color: #085041; margin-bottom: 20px; }
+  .mission p { font-size: 17px; color: #444; line-height: 1.8; }
+
+  .cta { background: #E1F5EE; padding: 80px 24px; text-align: center; }
+  .cta h2 { font-size: 36px; font-weight: 700; color: #085041; margin-bottom: 12px; }
+  .cta p { font-size: 17px; color: #0F6E56; margin-bottom: 32px; }
+
+  footer { padding: 32px 40px; text-align: center; color: #888; font-size: 13px; border-top: 1px solid #e0f0e8; }
+  footer span { color: #1D9E75; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 40px; }
+    nav { padding: 16px 20px; }
+    .waitlist input { width: 100%; }
+    .waitlist { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Rebox</span>
+  <a href="#waitlist" class="nav-btn">Join waitlist</a>
+</nav>
+
+<section class="hero">
+  <h1>Rebox</h1>
+  <p class="tagline">Give it a second life</p>
+  <p class="desc">Rebox connects people who have cardboard boxes with people who need them — for moving, shipping, or gifting. Free, local, and sustainable.</p>
+  <div class="waitlist" id="waitlist">
+    <input type="email" id="email-input" placeholder="your@email.com" />
+    <button onclick="joinWaitlist()">Join the waitlist</button>
+  </div>
+  <p class="success" id="success-msg">You're on the list! We'll be in touch soon.</p>
+</section>
+
+<section class="how">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Post your boxes</h3>
+      <p>Take a photo, select size and condition. Your listing goes live in under a minute.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Find boxes nearby</h3>
+      <p>Browse available boxes near you. Real GPS distances so you know exactly how far.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Claim and pick up</h3>
+      <p>Reserve your boxes with one tap. You have 2 hours to pick them up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="impact">
+  <h2>Every box counts</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">1.2M</div>
+      <div class="stat-label">tonnes of cardboard wasted daily</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">cost to give or take</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2kg</div>
+      <div class="stat-label">CO₂ saved per reused box</div>
+    </div>
+  </div>
+</section>
+
+<section class="mission">
+  <h2>Built for the planet</h2>
+  <p>Cardboard is one of the most recyclable materials on earth — but most of it goes straight to landfill after a single use. Rebox makes it easy to give boxes a second life, reduce waste, and help your neighbors at the same time.</p>
+</section>
+
+<section class="cta">
+  <h2>Be the first to know</h2>
+  <p>Rebox is launching soon. Join the waitlist and get early access.</p>
+  <div class="waitlist">
+    <input type="email" id="email-input-2" placeholder="your@email.com" />
+    <button onclick="joinWaitlist2()">Get early access</button>
+  </div>
+  <p class="success" id="success-msg-2">You're on the list! We'll be in touch soon.</p>
+</section>
+
+<footer>
+  <p>© 2026 <span>Rebox</span> · Give it a second life · joinrebox.com</p>
+</footer>
+
+<script>
+function joinWaitlist() {
+  const email = document.getElementById('email-input').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('email-input').value = '';
+}
+function joinWaitlist2() {
+  const email = document.getElementById('email-input-2').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  document.getElementById('success-msg-2').style.display = 'block';
+  document.getElementById('email-input-2').value = '';
+}
+</script>
+
+</body>
+</html>
