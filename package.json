@@ -1,0 +1,19 @@
+{
+  "name": "rebox-front",
+  "version": "1.0.0",
+  "description": "Rebox - Give it a second life",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server . -p 3000 -c-1 --cors"
+  },
+  "keywords": [
+    "rebox",
+    "sustainability",
+    "boxes"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
